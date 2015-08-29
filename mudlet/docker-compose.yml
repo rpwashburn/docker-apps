@@ -1,0 +1,15 @@
+mudlet:
+  image: quay.io/rpwashburn/mudlet
+  environment:
+      - "DISPLAY=unix:0"
+  volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  volumes_from:
+      - "mudlet-data"
+  working_dir: /opt/mudlet/bin
+  command: ./mudlet
+
+mudlet-data:
+  image: quay.io/rpwashburn/mudlet
+  volumes:
+    - "/root"

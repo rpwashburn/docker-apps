@@ -1,0 +1,17 @@
+phpstorm:
+  image: quay.io/rpwashburn/phpstorm
+  environment:
+      - "DISPLAY=unix:0"
+  volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  volumes_from:
+      - "phpstorm-data"
+  command: "/bin/sh -c 'cd /phpstorm/Php*/bin && ./phpstorm.sh'"
+
+phpstorm-data:
+  image: quay.io/rpwashburn/phpstorm
+  volumes:
+    - "/phpstorm"
+    - "/opt:/opt"
+    - "/root/.WebIde90"
+    - "/opt/sparefoot:/opt/sparefoot"

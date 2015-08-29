@@ -1,0 +1,19 @@
+spotify:
+  image: quay.io/rpwashburn/spotify
+  environment:
+      - "DISPLAY=unix:0"
+  volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+  volumes_from:
+        - "spotify-data"
+  devices:
+      - "/dev/snd:/dev/snd"
+  command: "-stylesheet=/home/spotify/spotify-override.css"
+
+spotify-data:
+  image: quay.io/rpwashburn/spotify
+  volumes:
+    - "/.cache/spotify"
+    - "/.config/spotify"
+    - "/.profile"
+
